@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>新春专题</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/index.css">
+
+  <link href="css/style.css" rel="stylesheet">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.6.0/webcomponents-bundle.min.js" integrity="sha512-neABzIqUQsRpYr8j0afAbBmH4+i25y4lDWXbx4IuS5Q3OqZoRKyfTDuV/BdgobRefiL17edueLudPvqWlmjKjg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.6.0/custom-elements-es5-adapter.min.js" integrity="sha512-mD9EqRtOw7zLPj2nnXh4+jDkbeVkp4u7AMseVc1ZfM8VmhLP7JFTiX/dlSNM8CRqjMDcNdZREQKBbGW8wFOWZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.6.0/webcomponents-loader.min.js" integrity="sha512-87HQlZfcdKURQiuqrvmuzZcHjj6wGfNIvQ2n8qHbyanZTMypZLRg0sgFniElrVNlLR4FW2GCDJC3b/+LmFLwwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <!-- 横幅 -->
+  <header>
+    <div class="banner">
+      <div class="firecrackers"></div>
+    </div>
+  </header>
+  <!-- 轮播部分 -->
+  <div class="carousel">
+    <ui-carousel></ui-carousel>
+  </div>
+  <!-- 视频|大联欢 -->
+  <div class="video-wrapper">
+    <video id='videoRef' poster="http://127.0.0.1:5500/01-html/theme/assets/images/video.jpg">
+      <source src="https://www.w3school.com.cn/i/movie.ogg" type="video/ogg">
+      <!-- <source src="" type="video/mp4"> -->
+      您的浏览器不支持 video 标签
+    </video>
+    <div class="player-angle">
+      <svg width="30" height="30" viewBox="-50 -50 300 300">
+        <polygon class="triangle" stroke-linejoin="round" points="0,0 150,100 0,200" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- 
+    站岗计算器
+    在这一刻
+          也许我们不知道有多少战友在守护看祖国的和平安详,也不知
+          道他们守护了多少日子,但是自己守护了多久,我相信我们每
+          个人还是挺好奇的
+   -->
+  <section class="section-sbj">
+    <div class="content">
+      <div class="text-wrapper">
+          <div class="text">时光荏苒,岁月变迁,时间又一次停靠在了节驿站!在这千家万户欢聚一、辞旧迎新的新佳节里,我们广大战友
+            还坚守在祖国的边疆海岛,坚守在各自的战位上!</div>
+          <div class="text">选择入伍时间,来看看您为祖国站多少天了吧!</div>
+        <form class="calute">
+          <label for="calcTime" id='calcLabel' style="display: inline-block;">
+            入伍时间
+            <input type="date" id="calcTime"
+            required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+            >
+          </label>
+          <!-- <input type="text" value="入伍时间" readonly class="calcTime"> -->
+         
+          <input type="text" id='output' readonly class="calcTime">
+          <button id="calc">开始计算</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI春联 -->
+  <section class="section-couplet">
+    <div class="header">
+
+    </div>
+    <div class="content">
+      <div class="form-container">
+        <div class="left">
+          <div>春节对对乐</div>
+          <div style="letter-spacing: 2.5px;">AI对下联</div>
+        </div>
+        <div class="form">
+          <input type="text">
+          <input type="text">
+          <button class="cbutton">提交</button>
+        </div>
+      </div>
+      <div class="card-container">
+        <ui-card-item></ui-card-item>
+      </div>
+    </div>
+  </section>
+
+  <!-- 猜灯谜 -->
+  <section class="section-lantern">
+    <div class="board">
+      <p class="lantern-text">
+        中间是火山，四边是大海。海里宝贝多，快快捞上来（打一日常用品）
+      </p>
+    </div>
+    <div class="lantern-action">
+      <button class="result">
+        显示谜底
+      </button>
+      <button class="next">
+        下一个
+      </button>
+    </div>
+  </section>
+
+  <!-- 新春看大片 -->
+  <section class="section-movies">
+    <div class="content">
+      <div class="header"></div>
+      <div class="card-box">
+        <ui-poster-item data-cols='5' data-url='http://127.0.0.1:5500/01-html/theme/components/movies.json'>
+        </ui-poster-item>
+      </div>
+      <!-- 历届春晚快捷入口 -->
+      <a href="#" class="festival"></a>
+    </div>
+  </section>
+  <!-- 新春小游戏 -->
+  <section class="section-games">
+    <div class="content">
+      <div class="header">
+      </div>
+      <div class="card-box">
+        <ui-poster-item data-cols='6' data-url='http://127.0.0.1:5500/01-html/theme/components/games.json'>
+        </ui-poster-item>
+      </div>
+    </div>
+  </section>
+
+  <!-- 滚动留言 -->
+  <section class="section-bullets">
+    <div class="bullets-wrapper">
+      <ui-barrage-animation></ui-barrage-animation>
+    </div>
+  </section>
+  <script>
+
+    // 视频处理
+    const poster = document.getElementsByClassName('player-angle')[0];
+    poster.addEventListener('click', function () {
+      if (!videoRef.ended) {
+        videoRef.play();
+        poster.style.visibility = 'hidden'
+      }
+    }, false)
+    videoRef.addEventListener('ended', function () {
+      const videoSrc = videoRef.currentSrc;
+      videoRef.src = ''
+      videoRef.src = videoSrc;
+      poster.style.visibility = 'visible'
+    }, false)
+
+
+    // 计算岗龄
+    // calcTime.addEventListener('change', function () {
+    //   if (calcTime.value) {
+    //     output.value = calcTime.value
+    //   }
+    // }, false)
+    calc.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (calcTime.value) {
+        const time = Date.now() - Date.parse(calcTime.value)
+        if(time<0){
+          return alert('日期错误')
+        }
+        const day = parseInt((time)/ (1000 * 60 * 60 * 24));
+        output.value = `${day}天`
+        // alert(`您已经站岗${day}天`)
+      }
+    }, false)
+  </script>
+  <script src="js/bianpao.js"></script>
+
+  <script type="module" defer src="./components/carousel.js"></script>
+  <script type="module" defer src="./components/card.js"></script>
+  <script type="module" defer src="./components/poster.js"></script>
+  <script type="module" defer src="./components/barrage.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+html {
+  line-height: 1.15; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+  font-size: 12px;
+}
+html, body {
+  margin: 0;
+  scroll-behavior: smooth;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+	width: 0px;
+	height: 0px;
+}
+.cbutton,button,input{
+  /* border: 0; */
+  border-style: none;
+  outline: none;
+  line-height: 1.15;
+  margin: 0; 
+}
+input{
+  padding-left: 10px;
+}
+
+div,section{
+  box-sizing: border-box;
+}

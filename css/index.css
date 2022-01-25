@@ -1,0 +1,358 @@
+body{
+  width: 100%;
+  max-width: 851px;
+  margin:0 auto
+}
+section{
+  overflow: hidden;
+}
+
+.banner{
+  width: 100%;
+  aspect-ratio: 100/66;
+  min-width:100%;
+  background-image: url('../assets/images/top-banner.jpg');
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.banner::before{
+  content: '';
+  width: 100%;
+  aspect-ratio: 98/17;
+  background-image: url('../assets/images/8.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;  
+  bottom: -15px;
+}
+.banner::after{
+  content: '';
+  width: 90px;
+  height: 60px;
+  background-image: url('../assets/images/polices.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;  
+  top: calc(13vw + 277px);
+  right: 2%;
+}
+.carousel{
+  width: 100%;
+  padding: 20px 8%;
+}
+.video-wrapper{
+  background-image: url('../assets/images/wt.png');
+  background-size: 132% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+  width: 100%;
+  aspect-ratio: 100/82;
+  text-align: center;
+  padding-top: 10%;
+  box-sizing: border-box;
+}
+
+.video-wrapper > video#videoRef{
+  object-fit: fill;
+  aspect-ratio: 80/45;
+  transform: translate(1%, 20%);
+  width: 80%;
+}
+/* play-button  */
+.player-angle{
+  width: 72px;
+  height: 72px;
+  border-radius: 100%;
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: contrast(0.5);
+}
+.player-angle > svg{
+  transform: translateX(6px);
+}
+svg .triangle{
+  fill: white;
+  stroke: white;
+  stroke-width: 20;
+}
+
+
+
+
+.section-sbj{
+  width: 100%;
+  aspect-ratio: 100/47;
+  background: rgb(253,219,188);
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+.section-sbj .content{
+  width: 90%;
+  height: 90%;
+  background-image: url('../assets/images/sbj.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.section-sbj .content .text-wrapper{
+  width: 42%;
+  height: 62.6%;
+  position: absolute;
+  right: 18%;
+  top: 26%;
+  text-overflow: ellipsis;
+  padding: 0 3%;
+  padding-top: 5%;
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+, edge */
+}
+.section-sbj .content .text-wrapper::-webkit-scrollbar {
+  display: none; 
+}
+
+.section-sbj .content .text-wrapper .text{
+  text-indent: 2em;
+  line-height: 1.5;
+}
+
+.calute{
+  display: flex;
+  margin: 9px 0;
+}
+
+#calcLabel{
+  text-align: center;
+  width: 33%;
+  overflow: hidden;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid #eee;
+}
+.calcTime{
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  width: 33%;
+  border: 1px solid #eee;
+  font-size: smaller;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.calute > button{
+  min-width: 68px;
+  height: 25px;
+  font-size: smaller;
+  /* padding: 0.6vw 0.3vw; */
+  color: white;
+  background-color: rgb(0,150,136);
+  border-radius: 1px;
+  margin: 0 6px;
+}
+
+
+.section-couplet{
+  width: 100%;
+  padding: 50px 0;
+  box-sizing: border-box;
+  background-color: rgb(253,204,161);
+}
+.section-couplet .header{
+  width: 80%;
+  aspect-ratio: 69/10;
+  margin: 0 auto;
+  background-image: url('../assets/images/cljxy.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.section-couplet .content{
+  width: 80%;
+  margin: 0 auto;
+}
+.form-container{
+  background-color: rgb(150,17,10);
+  display: flex;
+  /* padding: 1.1vw 1.59vw 2.14vw; */
+}
+.form-container > .left{
+  min-width: 72px;
+  color: white;
+  overflow: hidden;
+  white-space:normal;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.form-container > .left > div{
+  white-space: nowrap;
+}
+.form-container > .form{
+  width: 84%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+.form-container > .form > input{
+  width: 28%;
+  margin: 0 6px;
+  border-radius: 3px;
+  line-height: 25px;
+}
+.form-container > .form > button{
+  color: white;
+  padding: 3px 5px;
+  border-radius: 3px;
+  background-color: rgb(228,120,25);
+  min-width: 37px;
+}
+.content .card-container{
+  background-color: rgb(150,17,10);
+  padding: 1vw 0.3vw;
+  width: 100%;
+  aspect-ratio: 69/31;
+  margin-top: 13px;
+  border-radius: 5px;
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+, edge */
+
+}
+.content .card-container::-webkit-scrollbar {
+  display: none; 
+}
+
+.section-lantern{
+  width: 100%;
+  aspect-ratio: 100/46;
+  background-image: url('../assets/images/miyu.jpg');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+}
+.section-lantern > .board{
+  position: absolute;
+  top: 30%;
+  left: 19%;
+  width: 48%;
+  height: 113px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lantern-text{
+  color: rgb(217,13,2);
+  width: 200px;
+  font-weight: bolder;
+  font-size: medium;
+}
+.lantern-action{
+  position: absolute;
+  bottom: 14px;
+  left: 17%;
+  height: 26px;
+  aspect-ratio: 24/3;
+}
+.lantern-action > .result{
+  position: absolute;
+  font-size: smaller;
+  left: 6%;
+  width: 33%;
+  top: 9px;
+  color: rgb(252,214,178);
+  background-color: rgb(230,23,8);
+}
+.lantern-action > .next{
+  position: absolute;
+  font-size: smaller;
+  left: calc(8vw + 25px);
+  width: 25%;
+  top: 10px;
+  color: rgb(253,221,184);
+  background-color: rgb(138,108,38);
+}
+
+
+.section-movies{
+  width: 100%;
+  background-color: rgb(253,219,188);
+}
+.section-movies .content{
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+.section-movies .content .header{
+  width: 100%;
+  aspect-ratio: 69/10;
+  background-image: url('../assets/images/xckdp.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat; 
+}
+
+.card-box{
+  width: 100%;
+  padding-top: 10px;
+}
+
+.festival{
+  display: inline-block;
+  width: 100%;
+  aspect-ratio: 77/21;
+  background-image: url('../assets/images/lncw.jpg');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.section-games{
+  width: 100%;
+  background-color: rgb(253,204,161);
+}
+.section-games .content{
+  width: 80%;
+  margin: 15px auto;
+}
+.section-games .content .header{
+  width: 100%;
+  aspect-ratio: 69/10;
+  background-image: url('../assets/images/xcxyx.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat; 
+}
+
+
+.section-bullets{
+  background-color: rgb(253,219,188);
+  padding-top: 5%;
+  aspect-ratio: 100/44;
+}
+
+.bullets-wrapper{
+  width: 80%;
+  margin: 0 auto;
+}
+
+
