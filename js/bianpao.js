@@ -1,4 +1,4 @@
-const audio_url = 'http://127.0.0.1:5500/01-html/theme/assets/bianpao.mp3'
+const audio_url = 'https://demo-wheat-pi.vercel.app/assets/bianpao.mp3'
 
 const strVar = `
 <div class="d-layout-area">
