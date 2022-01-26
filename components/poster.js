@@ -14,6 +14,9 @@ const renderTemplate = config => {
     .item{
         text-align: center;
         width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     .item a{
         display:inline-block;
@@ -124,7 +127,6 @@ class PosterItem extends HTMLElement {
         }
       }
     } else {
-      console.log('first');
       window.removeEventListener("scroll", this.handleLazyLoad, false);
     }
   }

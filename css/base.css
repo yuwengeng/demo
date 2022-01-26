@@ -1,3 +1,15 @@
+/* 
+  基础公用样式
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	list-style: none;
+	border-collapse: collapse;
+}
+
 html {
   line-height: 1.15; /* 2 */
   -ms-text-size-adjust: 100%; /* 3 */
@@ -14,7 +26,6 @@ body::-webkit-scrollbar {
 	height: 0px;
 }
 .cbutton,button,input{
-  /* border: 0; */
   border-style: none;
   outline: none;
   line-height: 1.15;

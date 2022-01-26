@@ -277,8 +277,9 @@ svg .triangle{
   position: absolute;
   font-size: smaller;
   left: 6%;
-  width: 33%;
-  top: 9px;
+  width: 33.3%;
+  top: 1px;
+  height: 18px;
   color: rgb(252,214,178);
   background-color: rgb(230,23,8);
 }
@@ -287,7 +288,8 @@ svg .triangle{
   font-size: smaller;
   left: calc(8vw + 25px);
   width: 25%;
-  top: 10px;
+  top: 1px;
+  height: 18px;
   color: rgb(253,221,184);
   background-color: rgb(138,108,38);
 }

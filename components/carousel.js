@@ -31,19 +31,15 @@ let dataSource = [
 //   MODE: "MODE_ALTERNATE",
 // }
 const renderTemplate = config => {
-  const { index } = config
   // const { label, content, image } = config.data;
   return `
     <style>
-    :host {
-      display: block;
-    }
-
     #container {
       position: relative;
       height: 200px;
       margin: 0 auto;
       overflow: hidden;
+      border-radius: 4px;
     }
 
     #banner_bg {
@@ -64,7 +60,7 @@ const renderTemplate = config => {
       width: 100%;
       height: 100%;
       overflow: hidden;
-      transition: all 0.7s;
+      transition: all 1s;
   }
   #container .slide:nth-child(1) {
     z-index: 1;
@@ -92,7 +88,7 @@ const renderTemplate = config => {
       width: inherit;
       line-height: 1.5;
       background: rgba(0,0,0,0.7);
-      transition: all 0.8s;
+      transition: all 1s;
       box-sizing: border-box;
       padding: 1.1vw;
       color: white;
@@ -117,7 +113,7 @@ const renderTemplate = config => {
       <div id="banner_bg">
         ${config.data.map((item) => {
     return `
-            <a href="#" class='slide' onmouseover="handleHover" onmouseleave="">
+            <a href="#" class='slide'>
               <img class="carouselItem" height="240px" width="100%" src=${item.link}
               alt=${item.label} />     
             </a>
@@ -126,8 +122,8 @@ const renderTemplate = config => {
     }
       </div>
       <ul class="banner_control">
-        ${config.data.map((item) => `
-          <li class="description">
+        ${config.data.map((item, index) => `
+          <li class="description" id=${index}>
             <a class="descBox">${item.desc}</a>
           </li>
           `).join('')
@@ -147,14 +143,23 @@ class CarouselComponent extends HTMLElement {
     this.attachShadow({
       mode: 'open'
     });
-    this.autoPlay = this._autoPlay.bind(this)
+    this.autoPlay = this._autoPlay.bind(this);
+    this.handleLeave = this.handleLeave.bind(this)
+    this.handleHover = this.handleHover.bind(this)
+    this.setBannerInterval = this.setBannerInterval.bind(this)
+
   }
   connectedCallback() {
     tep.innerHTML = renderTemplate(this.state)
     this.shadowRoot.append(tep.content.cloneNode(true))
     const images = this.shadowRoot.getElementById('banner_bg');
     this.state.length = images.children.length
-    this.setBannerInterval()
+    this.setBannerInterval();
+
+    const container = this.shadowRoot.getElementById('container');
+    container.addEventListener('mouseover', this.handleHover, false)
+    container.addEventListener('mouseleave', this.handleLeave, false)
+
   }
   disconnectedCallback() {
     this.timer && clearInterval(this.timer)
@@ -165,21 +170,19 @@ class CarouselComponent extends HTMLElement {
   // attributeChangedCallback() {
 
   // }
-  _autoPlay() {
+  _autoPlay(focus) {
     const { index, length } = this.state;
-    if (index >= length) {
-      this.state.index = 1;
-      // console.log('ling',this.state.index);
-      // clearInterval(this.timer)
-    } else {
-      this.state.index += 1;
+    if (!focus) {
+      if (index >= length) {
+        this.state.index = 1;
+        // console.log('ling',this.state.index);
+        // clearInterval(this.timer)
+      } else {
+        this.state.index += 1;
+      }
     }
-    // this.shadowRoot.innerHTML =(tep.content.cloneNode(true))
-    // this.shadowRoot.innerHTML = renderTemplate(this.state)
     const slides = this.shadowRoot.querySelectorAll('.slide');
     const dots = this.shadowRoot.querySelectorAll('.description');
-
-    
     slides.forEach((item, i) => {
       // console.log('_autoPlay',this.state.index,i,length);
       if (i === this.state.index) {
@@ -193,25 +196,25 @@ class CarouselComponent extends HTMLElement {
       }
       return item.style.backgroundColor = 'rgba(0,0,0,0.7)';
     });
-    if(this.state.index === length){
+    if (this.state.index === length) {
       slides[0].style.opacity = 1;
       dots[0].style.backgroundColor = 'rgb(14,13,13)';
     }
     // console.log(this.state, index,)
   }
   setBannerInterval() {
-    this.timer = setInterval(() => {
-      this.autoPlay()
-    }, 2500)
+    this.timer = setInterval(this.autoPlay, 2500)
   }
-  stopInterval() {
-    this.timer && clearInterval(this.timer);
-  }
-  handleFocus() {
+  handleLeave() {
     this.setBannerInterval()
   }
-  handleHover() {
-    this.stopInterval()
+  handleHover(e) {
+    this.timer && clearInterval(this.timer);
+
+    if (e.target.classList.contains('description')) {
+      this.state.index = parseInt(e.target.id);
+      this.autoPlay(true)
+    }
   }
 }
 // 定义组件

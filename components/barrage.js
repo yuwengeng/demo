@@ -173,6 +173,10 @@ class BarrageAnimation extends HTMLElement {
 
   //随机获取高度
   getRandom(height) {
+    const h =parseInt(Math.random()*height);
+    if(h<22){
+      return 22
+    }
     return parseInt(Math.random()*height)
     // return start + (Math.random() * (end - start));
   }
@@ -213,7 +217,7 @@ class BarrageAnimation extends HTMLElement {
       },
       false
     );
-    const barrageOffsetTop = this.getRandom(this.barrageHeight);
+    const barrageOffsetTop = this.getRandom(this.barrageHeight - 18);
     divNode.style.top = barrageOffsetTop + 'px'
     this.barrageBox.appendChild(divNode);
     return divNode;

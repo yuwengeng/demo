@@ -1,11 +1,4 @@
-* {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	list-style: none;
-	border-collapse: collapse;
-}
-
+/* 顶部鞭炮部分样式 */
 .scale0_7 {
 	position: absolute;
 	right: 0;
@@ -22,7 +15,7 @@
 	position: relative;
 	height: 100%;
 	width: 6px;
-	background: url(../images/line.png) repeat-y center; -webkit-transform-origin: center top;
+	background: url(../assets/images/bianpao/line.png) repeat-y center; -webkit-transform-origin: center top;
 	transform-origin: center top;
 	-webkit-transition: height 5s linear .5s;
 	-moz-transition: height 5s linear .5s;
@@ -485,7 +478,7 @@
     left: -31px;
     width: 118px;
 	height: 71px;
-	background: url(../images/dianpao.png) no-repeat;
+	background: url(../assets/images/bianpao/dianpao.png) no-repeat;
 }
 
 
