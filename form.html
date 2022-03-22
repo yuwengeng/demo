@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrapper {
+      width: 88%;
+      height: 100%;
+      margin: 0 auto;
+      /* position: fixed; */
+      top: 50%;
+      left: 50%;
+      /* margin-left: -14%;
+      margin-top: -20%; */
+
+    }
+
+    div.cell {
+      display: table-cell;
+    }
+
+    div.info {
+      width: 100%;
+    }
+
+    .wrapper>form {
+      margin: 30px;
+      padding: 30px 10px;
+      background-clip: padding-box;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      box-shadow: 0 1px 50px #a2beff;
+      outline: 0;
+    }
+
+    label {
+      padding-right: 8px;
+      display: inline-block;
+      min-width: 130px;
+      margin-left: 20px;
+      text-align: end;
+    }
+  </style>
+  <!-- <link rel="stylesheet" href="https://qidian.gtimg.com/lulu/peak/css/common/ui.min.css"> -->
+  <link rel="stylesheet" href="https://qidian.gtimg.com/lulu/theme/peak/css/common/ui/Input.css">
+  <link rel="stylesheet" href="https://qidian.gtimg.com/lulu/theme/peak/css/common/ui/Button.css">
+
+  <script src="https://qidian.gtimg.com/lulu/peak/js/plugin/sea.js"></script>
+  <script src="https://qidian.gtimg.com/lulu/peak/js/plugin/jquery.js"></script>
+  <script src="https://qidian.gtimg.com/lulu/peak/js/common/comp/Form.js"></script>
+
+
+  <script src="./form.js"></script>
+  <!--   
+  <script src="https://qidian.gtimg.com/lulu/peak/js/common/ui/Dialog.js"></script> -->
+  <script>
+    function handleQuest() {
+      ajax({
+        method: 'post',
+        url: "https://dev.usemock.com/623969758701bab02ba8b789/static",
+        async: false,
+        data: { name: '11' }
+      })
+    }
+    function stopDefault() {
+      return false
+    }
+    // onsubmit="return stopDefault()"
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <h1 style="text-align: center;">工程三期建设终端需求申领统计表</h1>
+    <form action="https://dev.usemock.com/623969758701bab02ba8b789/static" method="post">
+      <div class="cell">
+        <label for="idLarge">大单位名称<span>*</span></label>
+        <input id="idLarge" class="ui-input" size="40" name="large" required>
+      </div><br>
+
+      <div class="cell">
+        <label for="idTroop">部队名称<span>*</span></label>
+        <input id="idTroop" class="ui-input" size="40" name="TroopName" required>
+      </div><br>
+      <div class="cell">
+        <label for="idcurrentNum">现有数量（套）<span>*</span></label>
+        <input type="number" id="idcurrentNum" min="0" class="ui-input" name="currentNum" required>
+      </div>
+      <div class="cell">
+        <label for="idneedNum">需求数量（套）<span>*</span></label>
+        <input type="number" id="idneedNum" min="0" class="ui-input" name="needNum" required>
+      </div>
+
+      <h3>通联方式：</h3>
+      <div class="info">
+      <div class="cell">
+        <label for="idName">联系人<span>*</span></label>
+        <input id="idName" class="ui-input" name="name" required minlength="2" maxlength="20" lang="zh">
+      </div><br>
+        <div class="cell">
+          <label for="idTel">座机号码<span>*</span></label>
+          <input id="idTel" class="ui-input" size="40" name="tel">
+        </div>
+        <div class="cell">
+          <label for="idMobile">手机号码<span>*</span></label>
+          <input type="tel" id="idMobile" class="ui-input" size="40" name="mobile" required>
+        </div>
+        <br>
+        <div class="cell">
+          <label for="idCode">邮编<span>*</span></label>
+          <input type="code" id="idCode" class="ui-input" size="40" name="code" required pattern="\d{6}">
+        </div>
+        <div class="cell">
+          <label for="idAdress">设备邮寄地址</label>
+          <input id="idAdress" class="ui-input" size="40" name="adress" required>
+        </div>
+      </div>
+      <div style="text-align: end;">
+        <input type="submit" id="formSubmit" class="ui-button" value="提交">
+      </div>
+    </form>
+  </div>
+</body>
+<script>
+  /**
+   * 邮编
+   * 手机号
+   * 自己写js，+代码压缩
+   */
+  var config = {
+    'base': 'https://qidian.gtimg.com/lulu/peak/js'
+  };
+</script>
+
+</html>
+<script>
+  seajs.config(config).use(['common/comp/Form', 'common/ui/Dialog'], function (Form, Dialog) {
+    var myForm = new Form($('form'), {
+      avoidSend: function () {
+        // 未登录, 提示检查无误
+        // if (/附件/.test($('#idMark').val())) {
+          var myConfirm = new Dialog().confirm('请确认信息检查无误？', {
+            buttons: [{
+              events: {
+                click: function () {
+                  myForm.ajax();
+                  myConfirm.remove();
+                }
+              }
+            }, {}]
+          });
+          return true;
+        // }
+      },
+      success: function (json) {
+        new Dialog().alert('<h6>注册成功！</h6>\
+                  <p>您注册手机号是：'+ json.data.tel + '</p>', {
+          type: 'success'
+        });
+
+        // 表单重置
+        this[0].reset();
+      },
+      error: function (err) {
+        console.error(err)
+      },
+      complete: function () {
+        // alert('complete')
+      }
+    }, {
+      label: true
+    });
+  });
+</script>
