@@ -1,62 +1,26 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    .wrapper {
-      width: 88%;
-      height: 100%;
-      margin: 0 auto;
-      /* position: fixed; */
-      top: 50%;
-      left: 50%;
-      /* margin-left: -14%;
-      margin-top: -20%; */
+  <title>终端需求申领</title>
+  <link rel="stylesheet" href="./css/animate.css">
 
-    }
+  <link rel="stylesheet" href="./css/Button.css">
+  <link rel="stylesheet" href="./css/Input.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/Dialog.css">
 
-    div.cell {
-      display: table-cell;
-    }
+  <!-- <script src="https://qidian.gtimg.com/c/=/lulu/theme/peak/js/plugin/jquery.js"></script> -->
+  <!-- <script src="https://qidian.gtimg.com/lulu/edge/js/common/comp/Form.js" type="module"></script>
+  <script src="https://qidian.gtimg.com/lulu/edge/js/common/ui/Dialog.js" type="module"></script> -->
+  <!-- <script src="https://qidian.gtimg.com/lulu/pure/js/common/all.js"></script> -->
+    <!-- <script src="./lib/commonWdge/ui/Dialog.js" type="module"></script>
+    <script src="./lib/commonWdge/comp/Form.js" type="module"></script> -->
 
-    div.info {
-      width: 100%;
-    }
-
-    .wrapper>form {
-      margin: 30px;
-      padding: 30px 10px;
-      background-clip: padding-box;
-      border: 1px solid transparent;
-      border-radius: 4px;
-      box-shadow: 0 1px 50px #a2beff;
-      outline: 0;
-    }
-
-    label {
-      padding-right: 8px;
-      display: inline-block;
-      min-width: 130px;
-      margin-left: 20px;
-      text-align: end;
-    }
-  </style>
-  <!-- <link rel="stylesheet" href="https://qidian.gtimg.com/lulu/peak/css/common/ui.min.css"> -->
-  <link rel="stylesheet" href="https://qidian.gtimg.com/lulu/theme/peak/css/common/ui/Input.css">
-  <link rel="stylesheet" href="https://qidian.gtimg.com/lulu/theme/peak/css/common/ui/Button.css">
-
-  <script src="https://qidian.gtimg.com/lulu/peak/js/plugin/sea.js"></script>
-  <script src="https://qidian.gtimg.com/lulu/peak/js/plugin/jquery.js"></script>
-  <script src="https://qidian.gtimg.com/lulu/peak/js/common/comp/Form.js"></script>
-
-
-  <script src="./form.js"></script>
-  <!--   
-  <script src="https://qidian.gtimg.com/lulu/peak/js/common/ui/Dialog.js"></script> -->
+  <!-- <script src="./dist/form.module.js"></script> -->
+    
   <script>
     function handleQuest() {
       ajax({
@@ -82,7 +46,7 @@
         <input id="idLarge" class="ui-input" size="40" name="large" required>
       </div><br>
 
-      <div class="cell">
+      <!-- <div class="cell">
         <label for="idTroop">部队名称<span>*</span></label>
         <input id="idTroop" class="ui-input" size="40" name="TroopName" required>
       </div><br>
@@ -93,14 +57,14 @@
       <div class="cell">
         <label for="idneedNum">需求数量（套）<span>*</span></label>
         <input type="number" id="idneedNum" min="0" class="ui-input" name="needNum" required>
-      </div>
+      </div> -->
 
       <h3>通联方式：</h3>
       <div class="info">
-      <div class="cell">
-        <label for="idName">联系人<span>*</span></label>
-        <input id="idName" class="ui-input" name="name" required minlength="2" maxlength="20" lang="zh">
-      </div><br>
+        <!-- <div class="cell">
+          <label for="idName">联系人<span>*</span></label>
+          <input id="idName" class="ui-input" name="name" required minlength="2" maxlength="20" lang="zh">
+        </div><br>
         <div class="cell">
           <label for="idTel">座机号码<span>*</span></label>
           <input id="idTel" class="ui-input" size="40" name="tel">
@@ -113,7 +77,7 @@
         <div class="cell">
           <label for="idCode">邮编<span>*</span></label>
           <input type="code" id="idCode" class="ui-input" size="40" name="code" required pattern="\d{6}">
-        </div>
+        </div> -->
         <div class="cell">
           <label for="idAdress">设备邮寄地址</label>
           <input id="idAdress" class="ui-input" size="40" name="adress" required>
@@ -125,35 +89,35 @@
     </form>
   </div>
 </body>
-<script>
-  /**
-   * 邮编
-   * 手机号
-   * 自己写js，+代码压缩
-   */
-  var config = {
-    'base': 'https://qidian.gtimg.com/lulu/peak/js'
-  };
-</script>
-
 </html>
-<script>
-  seajs.config(config).use(['common/comp/Form', 'common/ui/Dialog'], function (Form, Dialog) {
-    var myForm = new Form($('form'), {
+
+<script src="./lib/common/polyfill.min.js"></script>
+
+<script src="./lib/common/ui/Follow.js"></script>
+<script src="./lib/common/ui/ErrorTip.js"></script>
+<script src="./lib/common/ui/Validate.js"></script>
+<script src="./lib/common/ui/LightTip.js"></script>
+<script src="./lib/common/ui/Loading.js"></script>
+<script src="./lib/common/ui/Dialog.js"></script>
+<script src="./lib/common/comp/Form.js"></script>
+
+<!-- <script src="./form.js"></script> -->
+<script async>
+  var myForm = new Form(document.querySelector('form'), {
       avoidSend: function () {
         // 未登录, 提示检查无误
         // if (/附件/.test($('#idMark').val())) {
-          var myConfirm = new Dialog().confirm('请确认信息检查无误？', {
-            buttons: [{
-              events: {
-                click: function () {
-                  myForm.ajax();
-                  myConfirm.remove();
-                }
+        var myConfirm = new Dialog().confirm('请确认信息检查无误？', {
+          buttons: [{
+            events: {
+              click: function () {
+                myForm.ajax();
+                myConfirm.remove();
               }
-            }, {}]
-          });
-          return true;
+            }
+          }, {}]
+        });
+        return true;
         // }
       },
       success: function (json) {
@@ -163,7 +127,7 @@
         });
 
         // 表单重置
-        this[0].reset();
+        this.element.form.reset();
       },
       error: function (err) {
         console.error(err)
@@ -171,8 +135,5 @@
       complete: function () {
         // alert('complete')
       }
-    }, {
-      label: true
-    });
-  });
+    },);
 </script>
